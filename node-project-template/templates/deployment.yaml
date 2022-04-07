@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app
+  namespace: "default"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      name: nodejs-app   
+  template:
+    metadata:
+      name: nodejs-app
+      labels:
+        name: nodejs-app
+    spec:
+      containers:
+        - name: nodejs-app
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: 943009210227.dkr.ecr.eu-west-2.amazonaws.com/pdu-dev/tenant/sce-camlite/sce-camlite-ui:f-133-da8a6c12
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
