@@ -7,11 +7,11 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: ./nginx-ingress
+      chart: charts/podinfo
       version: '>1.0.x'
       sourceRef:
         kind: GitRepository
-        name: flux-system
+        name: podinfo
         namespace: flux-system
       interval: 1m
   values:
