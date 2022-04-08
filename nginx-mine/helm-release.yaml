@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: nginx-ingress
+      chart: ./nginx-ingress
       version: '4.0.x'
       sourceRef:
         kind: GitRepository
