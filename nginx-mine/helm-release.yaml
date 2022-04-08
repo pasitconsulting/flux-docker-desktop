@@ -1,18 +1,18 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: podinfo
-  namespace: default
+  name: nginx-mine
+  namespace: nginx-mine
 spec:
   interval: 5m
   chart:
     spec:
       chart: ./nginx-ingress
-      version: '4.0.x'
+      version: '>1.0.x'
       sourceRef:
         kind: GitRepository
-        name: nginx-mine
+        name: flux-system
         namespace: flux-system
       interval: 1m
   values:
-    replicaCount: 2
+    replicaCount: 1
